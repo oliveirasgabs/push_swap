@@ -6,7 +6,7 @@
 /*   By: gabrioli <gabrioli@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/21 00:09:10 by gabrioli          #+#    #+#             */
-/*   Updated: 2026/01/21 01:22:32 by gabrioli         ###   ########.fr       */
+/*   Updated: 2026/01/21 13:50:02 by gabrioli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,12 +16,12 @@ static void	move_a_to_b(t_stack_node **a, t_stack_node **b)
 {
 	t_stack_node	*cheapest_node;
 
-	cheapest_node = get_cheapest(*a);
-	if (cheapest_node->above_median && cheapest_node->target_node->above_median)
-		rotate_both(a, b, cheapest_node);
-	else if (!(cheapest_node->above_median) && !(cheapest_node->target_node->above_median))
-		rev_rotate_both(a, b, cheapest_node);
-	prep_for_push(a, cheapest_node, 'a');
+	cheapest_node = get_cheapest(*a); //pega o nó com menor custo
+	if (cheapest_node->above_median && cheapest_node->target_node->above_median) //se o nó tá acima da metade da pilha e o alvo dele tbm
+		rotate_both(a, b, cheapest_node); //rotaciona os dois
+	else if (!(cheapest_node->above_median) && !(cheapest_node->target_node->above_median)) //se o nó tá baixo da metade da pilha e o alvo dele tbm
+		rev_rotate_both(a, b, cheapest_node); // faz reverse return de ambos
+	prep_for_push(a, cheapest_node, 'a'); //
 	prep_for_push(a, cheapest_node->target_node, 'b');
 	pb(b, a, false);
 }

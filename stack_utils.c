@@ -6,7 +6,7 @@
 /*   By: gabrioli <gabrioli@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/20 23:15:16 by gabrioli          #+#    #+#             */
-/*   Updated: 2026/01/20 23:46:07 by gabrioli         ###   ########.fr       */
+/*   Updated: 2026/01/21 14:42:45 by gabrioli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,33 @@ bool	stack_sorted(t_stack_node *stack) //funcao pra verificar se ta ordenado
 		stack = stack->next; // vai pro prox
 	}
 	return (true);
+}
+
+bool	error_syntax(char *str)
+{
+	int	i;
+
+	i = 0;
+	while (str[i])
+	{
+		if (ft_isdigit((int)str[i]) || (str[i] == '+' || str[i] == '-'))
+			i++;
+		else
+			return (false);
+	}
+	return (true);
+}
+
+void	free_errors(t_stack_node *stack)
+{
+	t_stack_node	*tmp;
+
+	while (stack)
+	{
+		tmp = stack->next;
+		free(stack);
+		stack = tmp;
+	}
 }
 
 t_stack_node	*find_min(t_stack_node *stack) //função para encontrar o menor valor
