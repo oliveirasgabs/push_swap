@@ -6,17 +6,17 @@
 /*   By: gabrioli <gabrioli@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/30 00:10:46 by gabrioli          #+#    #+#             */
-/*   Updated: 2025/10/30 00:20:59 by gabrioli         ###   ########.fr       */
+/*   Updated: 2026/01/20 22:58:11 by gabrioli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_atoi(const char *nptr)
+int	ft_atol(const char *nptr)
 {
-	int	i;
-	int	value;
-	int	signal;
+	int		i;
+	long	value;
+	int		signal;
 
 	i = 0;
 	signal = 1;
