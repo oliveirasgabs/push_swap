@@ -1,0 +1,58 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   init_stack.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: gabrioli <gabrioli@student.42.rio>         +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2026/01/20 22:43:16 by gabrioli          #+#    #+#             */
+/*   Updated: 2026/01/20 23:16:19 by gabrioli         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include "push_swap.h"
+
+static void	append_node(t_stack_node **stack, int n) //função pra criar o nó
+{
+	t_stack_node	*node;
+	t_stack_node	*last_node;
+
+	if (!stack) //se stack vier nula
+		return	; //sai
+	node = malloc(sizeof(t_stack_node)); //aloca o que precisa no nó
+	if (!node)
+		return ; //sai
+	node->next = NULL;
+	node->nbr = n;
+	if (!(*stack)) //se tem o endereço da pilha, mas ela não aponta pra nada, ou seja primeira chamada
+	{
+		*stack = node; //agora a cabeça recebe o nó
+		node->prev = NULL; // e o anterior é nulo pq é a primeira chamada
+	}
+	else
+	{
+		last_node = ft_lstlast(*stack); //procura o ultimo nó da pilha
+		last_node->next = node; // o ultimo aponta pro nó que criamos agr
+		node->prev = last_node; // e o anterior do que criamos será o ultimo
+	}
+}
+
+void	init_stack_a(t_stack_node **a, char *argv[]) //função para iniciar a pilha a
+{
+	long	n;
+	int		i;
+
+	i = 0;
+	while (argv[i]) //enquanto não chegar no final do argumento
+	{
+		if (error_syntax(argv[i])) //verifico se tem algum erro/tem coisas além de número
+			free_errors(a); // libera
+		n = ft_atol(argv[i]); // faço conversão para long pq é maior que int
+		if (n > INT_MAX || n < INT_MIN) //se estourar,
+			free_errors(a); //libera
+		if (error_duplicate(*a, (int)n)) //se tiver duplicado
+			free_errors(a); //libera
+		append_node(a, (int)n); //passou em tudo, cria o nó na pilha
+		i++;
+	}
+}
