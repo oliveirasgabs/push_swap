@@ -6,11 +6,19 @@
 /*   By: gabrioli <gabrioli@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/21 00:09:10 by gabrioli          #+#    #+#             */
-/*   Updated: 2026/01/21 13:50:02 by gabrioli         ###   ########.fr       */
+/*   Updated: 2026/02/04 01:37:01 by gabrioli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "../push_swap.h"
+
+static void	rotate_both(t_stack_node **a, t_stack_node **b, t_stack_node *cheapest_node)
+{
+	while (*b != cheapest_node->target_node && *a != cheapest_node)
+		rr(a, b, false);
+	current_index(*a);
+	current_index(*b);
+}
 
 static void	move_a_to_b(t_stack_node **a, t_stack_node **b)
 {

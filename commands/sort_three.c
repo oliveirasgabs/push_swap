@@ -6,11 +6,11 @@
 /*   By: gabrioli <gabrioli@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/20 23:48:07 by gabrioli          #+#    #+#             */
-/*   Updated: 2026/01/21 00:08:16 by gabrioli         ###   ########.fr       */
+/*   Updated: 2026/02/04 00:17:20 by gabrioli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "../push_swap.h"
 
 void	sort_three(t_stack_node **a)
 {
