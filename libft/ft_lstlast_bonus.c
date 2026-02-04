@@ -6,15 +6,15 @@
 /*   By: gabrioli <gabrioli@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/06 22:56:25 by gabrioli          #+#    #+#             */
-/*   Updated: 2025/11/07 11:06:29 by gabrioli         ###   ########.fr       */
+/*   Updated: 2026/02/03 23:51:05 by gabrioli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-t_list	*ft_lstlast(t_list	*lst)
+t_stack_node	*ft_lstlast(t_stack_node *lst)
 {
-	t_list	*tmp;
+	t_stack_node	*tmp;
 
 	if (!lst)
 		return (NULL);

@@ -6,20 +6,20 @@
 /*   By: gabrioli <gabrioli@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/07 00:02:22 by gabrioli          #+#    #+#             */
-/*   Updated: 2025/11/07 14:53:16 by gabrioli         ###   ########.fr       */
+/*   Updated: 2026/02/03 23:53:32 by gabrioli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_lstiter(t_list *lst, void (*f)(void *))
+void	ft_lstiter(t_stack_node *lst, void (*f)(void *))
 {
-	t_list	*tmp;
+	t_stack_node	*tmp;
 
 	tmp = lst;
 	while (tmp)
 	{
-		f(tmp->content);
+		f(tmp->nbr);
 		tmp = tmp->next;
 	}
 }
@@ -33,8 +33,8 @@ void	ola(void **content)
 int	main(void)
 {
 	int	i;
-	t_list	*new_node;
-	t_list	*head;
+	t_stack_node	*new_node;
+	t_stack_node	*head;
 
 	i = 0;
 	new_node = NULL;

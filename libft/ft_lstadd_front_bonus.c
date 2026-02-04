@@ -6,13 +6,13 @@
 /*   By: gabrioli <gabrioli@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/06 17:07:32 by gabrioli          #+#    #+#             */
-/*   Updated: 2025/11/07 14:54:38 by gabrioli         ###   ########.fr       */
+/*   Updated: 2026/02/03 23:50:42 by gabrioli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_lstadd_front(t_list **lst, t_list *new)
+void	ft_lstadd_front(t_stack_node **lst, t_stack_node *new)
 {
 	if (!new)
 	{
@@ -29,7 +29,7 @@ int	main(void)
 {
 	int	*value;
 	int	i;
-	t_list	*new_node;
+	t_stack_node	*new_node;
 
 	i = 0;
 	value = i;

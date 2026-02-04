@@ -6,15 +6,15 @@
 /*   By: gabrioli <gabrioli@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/06 23:11:21 by gabrioli          #+#    #+#             */
-/*   Updated: 2025/11/07 14:55:10 by gabrioli         ###   ########.fr       */
+/*   Updated: 2026/02/03 23:51:39 by gabrioli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_lstadd_back(t_list **lst, t_list *new)
+void	ft_lstadd_back(t_stack_node **lst, t_stack_node *new)
 {
-	t_list	*tmp;
+	t_stack_node	*tmp;
 
 	if (!new)
 		return ;
@@ -33,7 +33,7 @@ int	main(void)
 {
 	int	*value;
 	int	i;
-	t_list	*new_node;
+	t_stack_node	*new_node;
 
 	i = 0;
 	value = i;

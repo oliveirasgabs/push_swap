@@ -6,20 +6,20 @@
 /*   By: gabrioli <gabrioli@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/06 16:37:21 by gabrioli          #+#    #+#             */
-/*   Updated: 2025/11/07 11:28:20 by gabrioli         ###   ########.fr       */
+/*   Updated: 2026/02/03 23:50:26 by gabrioli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-t_list	*ft_lstnew(void *content)
+t_stack_node	*ft_lstnew(void *content)
 {
-	t_list	*node;
+	t_stack_node	*node;
 
-	node = (t_list *)malloc(sizeof(t_list));
+	node = (t_stack_node *)malloc(sizeof(t_stack_node));
 	if (!node)
 		return (NULL);
-	node->content = content;
+	node->nbr = content;
 	node->next = NULL;
 	return (node);
 }
@@ -29,7 +29,7 @@ int	main()
 {
 	int	*value;
 	int	i;
-	t_list	*new_node;
+	t_stack_node	*new_node;
 
 	i = 15;
 	value = i;
