@@ -6,7 +6,7 @@
 /*   By: gabrioli <gabrioli@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/20 23:15:16 by gabrioli          #+#    #+#             */
-/*   Updated: 2026/01/21 14:42:45 by gabrioli         ###   ########.fr       */
+/*   Updated: 2026/02/04 00:35:07 by gabrioli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 bool	stack_sorted(t_stack_node *stack) //funcao pra verificar se ta ordenado
 {
 	if (!stack) //se vier null
-		return (1);
+		return (true);
 	while (stack->next) //enquanto não chegar no final da lista
 	{
 		if (stack->nbr > stack->next->nbr) // se o atual é maior que o numero do proximo nó, então nao ta ordenado
@@ -23,33 +23,6 @@ bool	stack_sorted(t_stack_node *stack) //funcao pra verificar se ta ordenado
 		stack = stack->next; // vai pro prox
 	}
 	return (true);
-}
-
-bool	error_syntax(char *str)
-{
-	int	i;
-
-	i = 0;
-	while (str[i])
-	{
-		if (ft_isdigit((int)str[i]) || (str[i] == '+' || str[i] == '-'))
-			i++;
-		else
-			return (false);
-	}
-	return (true);
-}
-
-void	free_errors(t_stack_node *stack)
-{
-	t_stack_node	*tmp;
-
-	while (stack)
-	{
-		tmp = stack->next;
-		free(stack);
-		stack = tmp;
-	}
 }
 
 t_stack_node	*find_min(t_stack_node *stack) //função para encontrar o menor valor
@@ -70,4 +43,24 @@ t_stack_node	*find_min(t_stack_node *stack) //função para encontrar o menor va
 		stack = stack->next; //vai pro prox
 	}
 	return (min_node);
+}
+
+t_stack_node	*find_max(t_stack_node *stack)
+{
+	long			max;
+	t_stack_node	*max_node;
+
+	if (!stack)
+		return (NULL);
+	max = LONG_MIN;
+	while (stack != NULL)
+	{
+		if (stack->nbr > max)
+		{
+			max = stack->nbr;
+			max_node = stack;
+		}
+		stack = stack->next;
+	}
+	return (max_node);
 }

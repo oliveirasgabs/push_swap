@@ -6,7 +6,7 @@
 /*   By: gabrioli <gabrioli@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/20 22:43:16 by gabrioli          #+#    #+#             */
-/*   Updated: 2026/01/20 23:16:19 by gabrioli         ###   ########.fr       */
+/*   Updated: 2026/02/04 01:28:46 by gabrioli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,4 +55,17 @@ void	init_stack_a(t_stack_node **a, char *argv[]) //função para iniciar a pilh
 		append_node(a, (int)n); //passou em tudo, cria o nó na pilha
 		i++;
 	}
+}
+
+t_stack_node	*get_cheapest(t_stack_node *stack)
+{
+	if (!stack)
+		return (NULL);
+	while (stack)
+	{
+		if (stack->cheapest)
+			return (stack);
+		stack = stack->next;
+	}
+	return (NULL);
 }
