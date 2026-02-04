@@ -6,7 +6,7 @@
 /*   By: gabrioli <gabrioli@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/20 18:08:09 by gabrioli          #+#    #+#             */
-/*   Updated: 2026/01/21 00:51:39 by gabrioli         ###   ########.fr       */
+/*   Updated: 2026/02/03 21:41:57 by gabrioli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,7 @@ t_stack_node	*find_min(t_stack_node *stack);
 void	sort_three(t_stack_node **a);
 void	sort_stacks(t_stack_node **a, t_stack_node **b);
 void	init_nodes_a(t_stack_node *a, t_stack_node *b);
+int		error_syntax(char *str);
 
 
 
