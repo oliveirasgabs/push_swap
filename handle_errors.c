@@ -6,7 +6,7 @@
 /*   By: gabrioli <gabrioli@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/03 21:30:51 by gabrioli          #+#    #+#             */
-/*   Updated: 2026/02/15 15:05:02 by gabrioli         ###   ########.fr       */
+/*   Updated: 2026/02/15 17:50:21 by gabrioli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,9 +25,9 @@ bool	error_syntax(char *str)
 	{
 		if (!(str[i] >= '0' && str[i] <= '9'))
 			return (true);
-		}
-		return (false);
 	}
+	return (false);
+}
 
 int	error_duplicate(t_stack_node *a, int n)
 {

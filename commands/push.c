@@ -6,7 +6,7 @@
 /*   By: gabrioli <gabrioli@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/10 01:42:00 by gabrioli          #+#    #+#             */
-/*   Updated: 2026/02/15 16:03:41 by gabrioli         ###   ########.fr       */
+/*   Updated: 2026/02/15 17:09:51 by gabrioli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ static void	push(t_stack_node **dest, t_stack_node **src)
 	if (!*dest)
 	{
 		*dest = push_node;
-		push_node->next = *dest;
+		push_node->next = NULL;
 	}
 	else
 	{

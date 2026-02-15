@@ -6,7 +6,7 @@
 /*   By: gabrioli <gabrioli@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/15 16:06:07 by gabrioli          #+#    #+#             */
-/*   Updated: 2026/01/20 22:41:17 by gabrioli         ###   ########.fr       */
+/*   Updated: 2026/02/15 17:43:17 by gabrioli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,12 +19,15 @@ int	main(int argc, char *argv[])
 
 	a = NULL; //Preciso iniciar null pois é boa pratica
 	b = NULL;
-	if (argc < 2 || (argc == 2 && !argv[1])) //Se o programa tem < de 1 argumento ou se são dois argumentos e o segundo argumento é nulo
+	if (argc < 2 || (argc == 2 && !argv[1][0])) //Se o programa tem < de 1 argumento ou se são dois argumentos e o segundo argumento é nulo
 		return (1); // Caso seja, retornar 1;
 	else if (argc == 2) //Verificar se só tem 2 argumentos
+	{
 		argv = ft_split(argv[1], ' '); //chama afunção split para separar o argv[1]
-	//chama a função que vai jogar os números na stack A
-	init_stack_a(&a, argv + 1); // argv + 1 pois eu passo o segundo argumento, pois o primeiro é o nome do programa
+		init_stack_a(&a, argv); // Agora argv aponta pro array de split, sem o nome do programa
+	}
+	else
+		init_stack_a(&a, argv + 1); // Aqui argv ainda é o argv original, então argv + 1 pula o nome
 	if (!stack_sorted(a)) //Se não tiver organizado
 	{
 		if (ft_lstsize(a) == 2) //verifica que a lista só tem 2 pratos
