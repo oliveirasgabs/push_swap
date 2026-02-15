@@ -6,7 +6,7 @@
 /*   By: gabrioli <gabrioli@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/20 22:43:16 by gabrioli          #+#    #+#             */
-/*   Updated: 2026/02/04 01:28:46 by gabrioli         ###   ########.fr       */
+/*   Updated: 2026/02/15 16:02:08 by gabrioli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@ static void	append_node(t_stack_node **stack, int n) //função pra criar o nó
 		return ; //sai
 	node->next = NULL;
 	node->nbr = n;
+	node->cheapest = 0;
 	if (!(*stack)) //se tem o endereço da pilha, mas ela não aponta pra nada, ou seja primeira chamada
 	{
 		*stack = node; //agora a cabeça recebe o nó
@@ -68,4 +69,25 @@ t_stack_node	*get_cheapest(t_stack_node *stack)
 		stack = stack->next;
 	}
 	return (NULL);
+}
+
+void	prep_for_push(t_stack_node **stack, t_stack_node *top_node, char stack_name)
+{
+	while (*stack != top_node)
+	{
+		if (stack_name == 'a')
+		{
+			if (top_node->above_median)
+				ra(stack, false);
+			else
+				rra(stack, false);
+		}
+		else if (stack_name == 'b')
+		{
+			if (top_node->above_median)
+				rb(stack, false);
+			else
+				rrb(stack, false);
+		}
+	}
 }

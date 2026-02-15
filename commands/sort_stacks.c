@@ -6,7 +6,7 @@
 /*   By: gabrioli <gabrioli@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/21 00:09:10 by gabrioli          #+#    #+#             */
-/*   Updated: 2026/02/04 01:37:01 by gabrioli         ###   ########.fr       */
+/*   Updated: 2026/02/15 16:01:20 by gabrioli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,13 @@ static void	rotate_both(t_stack_node **a, t_stack_node **b, t_stack_node *cheape
 {
 	while (*b != cheapest_node->target_node && *a != cheapest_node)
 		rr(a, b, false);
+	current_index(*a);
+	current_index(*b);
+}
+static void	rev_rotate_both(t_stack_node **a, t_stack_node **b, t_stack_node *cheapest_node)
+{
+	while (*b != cheapest_node->target_node && *a != cheapest_node)
+		rrr(a, b, false);
 	current_index(*a);
 	current_index(*b);
 }
@@ -29,8 +36,8 @@ static void	move_a_to_b(t_stack_node **a, t_stack_node **b)
 		rotate_both(a, b, cheapest_node); //rotaciona os dois
 	else if (!(cheapest_node->above_median) && !(cheapest_node->target_node->above_median)) //se o nó tá baixo da metade da pilha e o alvo dele tbm
 		rev_rotate_both(a, b, cheapest_node); // faz reverse return de ambos
-	prep_for_push(a, cheapest_node, 'a'); //
-	prep_for_push(a, cheapest_node->target_node, 'b');
+	prep_for_push(a, cheapest_node, 'a'); //posiciona o nó em A
+	prep_for_push(b, cheapest_node->target_node, 'b'); //posiciona o alvo em B
 	pb(b, a, false);
 }
 
@@ -42,8 +49,9 @@ static void move_b_to_a(t_stack_node **a, t_stack_node **b)
 
 static void	min_on_top(t_stack_node **a)
 {
-	while((*a)->nbr != find_min(*a)->nbr);
+	while((*a)->nbr != find_min(*a)->nbr)
 	{
+		current_index(*a);
 		if (find_min(*a)->above_median)
 			ra(a, false);
 		else

@@ -6,7 +6,7 @@
 /*   By: gabrioli <gabrioli@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/07 00:02:22 by gabrioli          #+#    #+#             */
-/*   Updated: 2026/02/03 23:53:32 by gabrioli         ###   ########.fr       */
+/*   Updated: 2026/02/10 01:00:33 by gabrioli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ void	ft_lstiter(t_stack_node *lst, void (*f)(void *))
 	tmp = lst;
 	while (tmp)
 	{
-		f(tmp->nbr);
+		f((void *)(long)tmp->nbr);
 		tmp = tmp->next;
 	}
 }

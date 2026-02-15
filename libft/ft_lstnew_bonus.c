@@ -6,7 +6,7 @@
 /*   By: gabrioli <gabrioli@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/06 16:37:21 by gabrioli          #+#    #+#             */
-/*   Updated: 2026/02/03 23:50:26 by gabrioli         ###   ########.fr       */
+/*   Updated: 2026/02/10 00:59:47 by gabrioli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,9 @@ t_stack_node	*ft_lstnew(void *content)
 	node = (t_stack_node *)malloc(sizeof(t_stack_node));
 	if (!node)
 		return (NULL);
-	node->nbr = content;
+	node->nbr = (int)(long)content;
 	node->next = NULL;
+	node->prev = NULL;
 	return (node);
 }
 /*

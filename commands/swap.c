@@ -6,7 +6,7 @@
 /*   By: gabrioli <gabrioli@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/04 00:37:18 by gabrioli          #+#    #+#             */
-/*   Updated: 2026/02/04 00:37:21 by gabrioli         ###   ########.fr       */
+/*   Updated: 2026/02/15 16:09:20 by gabrioli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,4 +30,17 @@ void	sa(t_stack_node **a, bool print)
 	swap(a);
 	if (!print)
 		write(1, "sa\n", 3);
+}
+void	sb(t_stack_node **b, bool print)
+{
+	swap(b);
+	if(!print)
+		write(1, "sb\n", 3);
+}
+void	ss(t_stack_node **a, t_stack_node **b, bool print)
+{
+	swap(a);
+	swap(b);
+	if (!print)
+		write(1, "ss\n", 3);
 }

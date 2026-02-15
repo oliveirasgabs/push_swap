@@ -6,7 +6,7 @@
 /*   By: gabrioli <gabrioli@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/21 00:21:01 by gabrioli          #+#    #+#             */
-/*   Updated: 2026/01/21 01:08:31 by gabrioli         ###   ########.fr       */
+/*   Updated: 2026/02/15 15:08:36 by gabrioli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,7 +89,8 @@ void	set_cheapest(t_stack_node *stack) //verifica se o nó atual de fato tem o m
 
 	if(!stack)
 		return ;
-	cheapest_node = LONG_MAX;
+	cheapest_value = LONG_MAX;
+	cheapest_node = NULL;
 	while (stack)
 	{
 		if (stack->push_cost < cheapest_value) //se o custo do nó atual for menor que o menor valor atual
@@ -102,7 +103,7 @@ void	set_cheapest(t_stack_node *stack) //verifica se o nó atual de fato tem o m
 	cheapest_node->cheapest = true; //o nó que for o menor, agora será true
 }
 
-static void	init_nodes_a(t_stack_node *a, t_stack_node *b) //função para setar os calculos de movimento de cada nó
+void	init_nodes_a(t_stack_node *a, t_stack_node *b) //função para setar os calculos de movimento de cada nó
 {
 	current_index(a); //função para verificar a posição do no atual a
 	current_index(b); //função para verificar a posição do no atual b

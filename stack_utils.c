@@ -6,7 +6,7 @@
 /*   By: gabrioli <gabrioli@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/20 23:15:16 by gabrioli          #+#    #+#             */
-/*   Updated: 2026/02/04 00:35:07 by gabrioli         ###   ########.fr       */
+/*   Updated: 2026/02/15 15:19:30 by gabrioli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ t_stack_node	*find_min(t_stack_node *stack) //função para encontrar o menor va
 	if (!stack) //se tiver null
 		return (NULL);
 	min = LONG_MAX; //o min agr é igual a 2147483647 para 32bits
-	while (stack) // enquanto nao chegou no final da lista
+	while (stack != NULL) // enquanto nao chegou no final da lista
 	{
 		if (stack->nbr < min) // se o prato atual for menor que o valor que ta valando o min
 		{
@@ -45,7 +45,7 @@ t_stack_node	*find_min(t_stack_node *stack) //função para encontrar o menor va
 	return (min_node);
 }
 
-t_stack_node	*find_max(t_stack_node *stack)
+t_stack_node	*find_max(t_stack_node *stack) //função para encontrar o maior valor
 {
 	long			max;
 	t_stack_node	*max_node;
@@ -55,10 +55,10 @@ t_stack_node	*find_max(t_stack_node *stack)
 	max = LONG_MIN;
 	while (stack != NULL)
 	{
-		if (stack->nbr > max)
+		if (stack->nbr > max) //Se o valor atual é maior que o valor max
 		{
-			max = stack->nbr;
-			max_node = stack;
+			max = stack->nbr; // Novo valor maximo é o prato atual
+			max_node = stack; // o maior nó é o atual
 		}
 		stack = stack->next;
 	}
