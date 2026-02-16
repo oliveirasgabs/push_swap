@@ -6,7 +6,7 @@
 /*   By: gabrioli <gabrioli@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/04 19:42:37 by gabrioli          #+#    #+#             */
-/*   Updated: 2025/11/07 10:50:56 by gabrioli         ###   ########.fr       */
+/*   Updated: 2026/02/15 19:31:44 by gabrioli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ static size_t	count_words(char const *s, char c)
 	return (count);
 }
 
-static char	**free_matrix(char **matrix)
+char	**free_matrix(char **matrix)
 {
 	size_t	i;
 

@@ -6,7 +6,7 @@
 /*   By: gabrioli <gabrioli@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/03 21:30:51 by gabrioli          #+#    #+#             */
-/*   Updated: 2026/02/15 17:50:21 by gabrioli         ###   ########.fr       */
+/*   Updated: 2026/02/15 21:17:06 by gabrioli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,9 +60,11 @@ void	free_stack(t_stack_node **stack)
 	*stack = NULL;
 }
 
-void	free_errors(t_stack_node **a)
+void	free_errors(t_stack_node **a, char **matrix)
 {
 	free_stack(a);
+	if (matrix)
+		free_matrix(matrix);
 	write(1, "Error\n", 6);
 	exit(1);
 }

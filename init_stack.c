@@ -6,7 +6,7 @@
 /*   By: gabrioli <gabrioli@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/20 22:43:16 by gabrioli          #+#    #+#             */
-/*   Updated: 2026/02/15 18:24:45 by gabrioli         ###   ########.fr       */
+/*   Updated: 2026/02/15 19:41:11 by gabrioli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ static void	append_node(t_stack_node **stack, int n) //função pra criar o nó
 	}
 }
 
-void	init_stack_a(t_stack_node **a, char *argv[]) //função para iniciar a pilha a
+void	init_stack_a(t_stack_node **a, char *argv[], char **matrix) //função para iniciar a pilha a
 {
 	long	n;
 	int		i;
@@ -47,12 +47,12 @@ void	init_stack_a(t_stack_node **a, char *argv[]) //função para iniciar a pilh
 	while (argv[i]) //enquanto não chegar no final do argumento
 	{
 		if (error_syntax(argv[i])) //verifico se tem algum erro/tem coisas além de número
-			free_errors(a); // libera
+			free_errors(a, matrix); // libera
 		n = ft_atol(argv[i]); // faço conversão para long pq é maior que int
 		if (n > INT_MAX || n < INT_MIN) //se estourar,
-			free_errors(a); //libera
+			free_errors(a, matrix); //libera
 		if (error_duplicate(*a, (int)n)) //se tiver duplicado
-			free_errors(a); //libera
+			free_errors(a, matrix); //libera
 		append_node(a, (int)n); //passou em tudo, cria o nó na pilha
 		i++;
 	}

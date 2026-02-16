@@ -6,7 +6,7 @@
 /*   By: gabrioli <gabrioli@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/20 18:08:09 by gabrioli          #+#    #+#             */
-/*   Updated: 2026/02/15 18:25:56 by gabrioli         ###   ########.fr       */
+/*   Updated: 2026/02/15 19:41:32 by gabrioli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ void	sort_three(t_stack_node **a);
 void	sort_stacks(t_stack_node **a, t_stack_node **b);
 
 /*Stack initiation*/
-void	init_stack_a(t_stack_node **a, char *argv[]);
+void	init_stack_a(t_stack_node **a, char *argv[], char **matrix);
 
 /*Nodes initiation*/
 void			init_nodes_a(t_stack_node *a, t_stack_node *b);
@@ -43,7 +43,7 @@ void			prep_for_push(t_stack_node **stack, t_stack_node *top_node, char stack_na
 
 /*Handle errors*/
 bool	error_syntax(char *str);
-void	free_errors(t_stack_node **a);
+void	free_errors(t_stack_node **a, char **matrix);
 void	free_stack(t_stack_node **stack);
 int		error_duplicate(t_stack_node *a, int n);
 

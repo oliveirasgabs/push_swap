@@ -6,7 +6,7 @@
 /*   By: gabrioli <gabrioli@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/07 18:13:08 by gabrioli          #+#    #+#             */
-/*   Updated: 2026/02/03 23:47:43 by gabrioli         ###   ########.fr       */
+/*   Updated: 2026/02/15 20:47:44 by gabrioli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,7 @@ void				*ft_memchr(const void *s, int c, size_t n);
 int					ft_memcmp(const void *s1, const void *s2, size_t n);
 char				*ft_strnstr(const char *big, const char *little,
 						size_t len);
-int					ft_atol(const char *nptr);
+long					ft_atol(const char *nptr);
 void				*ft_calloc(size_t nmemb, size_t size);
 char				*ft_strdup(const char *s);
 char				*ft_substr(char const *s, unsigned int start, size_t len);
@@ -81,5 +81,6 @@ void				ft_lstclear(t_stack_node **lst, void (*del)(void *));
 void				ft_lstiter(t_stack_node *lst, void (*f)(void *));
 t_stack_node		*ft_lstmap(t_stack_node *lst, void *(*f)(void *),
 						void (*del)(void *));
+char				**free_matrix(char **matrix);
 
 #endif
