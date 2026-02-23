@@ -6,19 +6,19 @@
 /*   By: gabrioli <gabrioli@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/21 00:21:01 by gabrioli          #+#    #+#             */
-/*   Updated: 2026/02/15 15:08:36 by gabrioli         ###   ########.fr       */
+/*   Updated: 2026/02/23 18:21:57 by gabrioli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	current_index(t_stack_node *stack) //função para colcoar qual index de cada nó e se eles estão acima ou abaixo da metade da lista
+void	current_index(t_stack_node *stack)
 {
 	int	i;
 	int	median;
 
 	i = 0;
-	if(!stack)
+	if (!stack)
 		return ;
 	median = ft_lstsize(stack) / 2;
 	while (stack)
@@ -33,81 +33,79 @@ void	current_index(t_stack_node *stack) //função para colcoar qual index de ca
 	}
 }
 
-static void	set_target_a(t_stack_node *a, t_stack_node *b) //para cada nó na pilha A, eu vou calcular o melhor alvo
+static void	set_target_a(t_stack_node *a, t_stack_node *b)
 {
 	t_stack_node	*current_b;
 	t_stack_node	*target_node;
 	long			best_match_index;
 
-	while (a) //enquanto nao chegar no final da pilha
+	while (a)
 	{
-		best_match_index = LONG_MIN; //menor valor
+		best_match_index = LONG_MIN;
 		current_b = b;
-		while (current_b) //enquanto nao chegar no final
+		while (current_b)
 		{
-			//se o valor do nó atual for menor que o valor do no a e o valor do nó atual for maior que o menor valor possivel
 			if (current_b->nbr < a->nbr && current_b->nbr > best_match_index)
 			{
-				best_match_index = current_b->nbr; //agora o menor valor possivel é o valor atual
-				target_node = current_b; //e o alvo vai ser o no atual
+				best_match_index = current_b->nbr;
+				target_node = current_b;
 			}
-			current_b = current_b->next; //vai pro proximo
+			current_b = current_b->next;
 		}
-		if (best_match_index == LONG_MIN) //se nao encontrou nada
-			a->target_node = find_max(b); //verifico de encontro o maior valor
+		if (best_match_index == LONG_MIN)
+			a->target_node = find_max(b);
 		else
 			a->target_node = target_node;
 		a = a->next;
 	}
 }
 
-static void	cost_analysis_a(t_stack_node *a, t_stack_node *b) // calculo para saber o custo de movimentar
+static void	cost_analysis_a(t_stack_node *a, t_stack_node *b)
 {
 	int	size_a;
 	int	size_b;
 
 	size_a = ft_lstsize(a);
 	size_b = ft_lstsize(b);
-
-	while(a)
+	while (a)
 	{
-		a->push_cost = a->index; //o custo a principio é o index
-		if (!a->above_median) //se o nó estiver abaixo do meio
-			a->push_cost = size_a - (a->index); //o custo dele será o tamanho da pilha menos o index dele
-		if (a->target_node->above_median) //se o alvo do nó atual tiver acima do meio da pilha
-			a->push_cost += a->target_node->index; //o custo vai ser a soma do custo atual + o indice do alvo dele
+		a->push_cost = a->index;
+		if (!a->above_median)
+			a->push_cost = size_a - (a->index);
+		if (a->target_node->above_median)
+			a->push_cost += a->target_node->index;
 		else
-			a->push_cost += size_b - (a->target_node->index); // o custo vai ser a soma do custo + tamanho da pilha b - o indice do alvo do nó atual
+			a->push_cost += size_b - (a->target_node->index);
 		a = a->next;
 	}
 }
 
-void	set_cheapest(t_stack_node *stack) //verifica se o nó atual de fato tem o menor custo
+void	set_cheapest(t_stack_node *stack)
 {
-	long	cheapest_value;
+	long			cheapest_value;
 	t_stack_node	*cheapest_node;
 
-	if(!stack)
+	if (!stack)
 		return ;
 	cheapest_value = LONG_MAX;
 	cheapest_node = NULL;
 	while (stack)
 	{
-		if (stack->push_cost < cheapest_value) //se o custo do nó atual for menor que o menor valor atual
+		if (stack->push_cost < cheapest_value)
 		{
-			cheapest_value = stack->push_cost; //o menor valor atual vai ser o custo do nó atual
-			cheapest_node = stack; // e o menor nó vai ser o atual
+			cheapest_value = stack->push_cost;
+			cheapest_node = stack;
 		}
-		stack = stack->next; //vai pro proximo
+		stack = stack->next;
 	}
-	cheapest_node->cheapest = true; //o nó que for o menor, agora será true
+	cheapest_node->cheapest = true;
 }
 
-void	init_nodes_a(t_stack_node *a, t_stack_node *b) //função para setar os calculos de movimento de cada nó
+void	init_nodes_a(t_stack_node *a, t_stack_node *b)
 {
-	current_index(a); //função para verificar a posição do no atual a
-	current_index(b); //função para verificar a posição do no atual b
-	set_target_a(a, b); //para cada nó na pilha A, eu vou verificar o nó alvo
+	current_index(a);
+	current_index(b);
+	set_target_a(a, b);
 	cost_analysis_a(a, b);
 	set_cheapest(a);
 }

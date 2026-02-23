@@ -6,13 +6,14 @@
 /*   By: gabrioli <gabrioli@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/07 00:17:11 by gabrioli          #+#    #+#             */
-/*   Updated: 2026/02/10 01:04:13 by gabrioli         ###   ########.fr       */
+/*   Updated: 2026/02/23 18:23:39 by gabrioli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-t_stack_node	*ft_lstmap(t_stack_node *lst, void *(*f)(void *), void (*del)(void *))
+t_stack_node	*ft_lstmap(t_stack_node *lst, void *(*f)(void *),
+				void (*del)(void *))
 {
 	t_stack_node	*new_lst;
 	t_stack_node	*node;

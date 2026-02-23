@@ -6,7 +6,7 @@
 /*   By: gabrioli <gabrioli@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/06 22:43:34 by gabrioli          #+#    #+#             */
-/*   Updated: 2026/02/15 13:30:34 by gabrioli         ###   ########.fr       */
+/*   Updated: 2026/02/23 18:23:51 by gabrioli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 int	ft_lstsize(t_stack_node *lst)
 {
-	int		count;
+	int				count;
 	t_stack_node	*tmp;
 
 	count = 0;

@@ -16,11 +16,11 @@ void	sort_three(t_stack_node **a)
 {
 	t_stack_node	*biggest_node;
 
-	biggest_node = find_max(*a); //chama pra procurar o maior nó
-	if (biggest_node == *a) //se o maior ta igual ao primeiro no
-		ra(a, false); // faz uma rotação em a pra jogar ele pro final
-	else if ((*a)->next == biggest_node) //verifica se o proximo é igual ao maior
-		rra(a, false); // ai faz o reverse rotation em a
-	if ((*a)->nbr > (*a)->next->nbr) // verifica de o conteudo do no atual é maior do que o do proximo
-		sa(a, false); //faz swap
+	biggest_node = find_max(*a);
+	if (biggest_node == *a)
+		ra(a, false);
+	else if ((*a)->next == biggest_node)
+		rra(a, false);
+	if ((*a)->nbr > (*a)->next->nbr)
+		sa(a, false);
 }

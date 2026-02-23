@@ -6,7 +6,7 @@
 /*   By: gabrioli <gabrioli@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/10 01:42:00 by gabrioli          #+#    #+#             */
-/*   Updated: 2026/02/15 17:09:51 by gabrioli         ###   ########.fr       */
+/*   Updated: 2026/02/23 18:02:51 by gabrioli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,8 @@ static void	push(t_stack_node **dest, t_stack_node **src)
 		return ;
 	push_node = *src;
 	*src = (*src)->next;
-	if (*src) // Checa se o nó atual existe
-		(*src)->prev = NULL; // O nó atual será a cabeça
+	if (*src)
+		(*src)->prev = NULL;
 	push_node->prev = NULL;
 	if (!*dest)
 	{
