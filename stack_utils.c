@@ -6,46 +6,46 @@
 /*   By: gabrioli <gabrioli@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/20 23:15:16 by gabrioli          #+#    #+#             */
-/*   Updated: 2026/02/15 15:19:30 by gabrioli         ###   ########.fr       */
+/*   Updated: 2026/02/23 18:08:29 by gabrioli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-bool	stack_sorted(t_stack_node *stack) //funcao pra verificar se ta ordenado
+bool	stack_sorted(t_stack_node *stack)
 {
-	if (!stack) //se vier null
+	if (!stack)
 		return (true);
-	while (stack->next) //enquanto não chegar no final da lista
+	while (stack->next)
 	{
-		if (stack->nbr > stack->next->nbr) // se o atual é maior que o numero do proximo nó, então nao ta ordenado
+		if (stack->nbr > stack->next->nbr)
 			return (false);
-		stack = stack->next; // vai pro prox
+		stack = stack->next;
 	}
 	return (true);
 }
 
-t_stack_node	*find_min(t_stack_node *stack) //função para encontrar o menor valor
+t_stack_node	*find_min(t_stack_node *stack)
 {
 	long			min;
 	t_stack_node	*min_node;
 
-	if (!stack) //se tiver null
+	if (!stack)
 		return (NULL);
-	min = LONG_MAX; //o min agr é igual a 2147483647 para 32bits
-	while (stack != NULL) // enquanto nao chegou no final da lista
+	min = LONG_MAX;
+	while (stack != NULL)
 	{
-		if (stack->nbr < min) // se o prato atual for menor que o valor que ta valando o min
+		if (stack->nbr < min)
 		{
-			min = stack->nbr; //agora o min vai ser o valor do no atual
-			min_node = stack; //e o no minimo vai ser esse de agr
+			min = stack->nbr;
+			min_node = stack;
 		}
-		stack = stack->next; //vai pro prox
+		stack = stack->next;
 	}
 	return (min_node);
 }
 
-t_stack_node	*find_max(t_stack_node *stack) //função para encontrar o maior valor
+t_stack_node	*find_max(t_stack_node *stack)
 {
 	long			max;
 	t_stack_node	*max_node;
@@ -55,12 +55,24 @@ t_stack_node	*find_max(t_stack_node *stack) //função para encontrar o maior va
 	max = LONG_MIN;
 	while (stack != NULL)
 	{
-		if (stack->nbr > max) //Se o valor atual é maior que o valor max
+		if (stack->nbr > max)
 		{
-			max = stack->nbr; // Novo valor maximo é o prato atual
-			max_node = stack; // o maior nó é o atual
+			max = stack->nbr;
+			max_node = stack;
 		}
 		stack = stack->next;
 	}
 	return (max_node);
+}
+
+void	min_on_top(t_stack_node **a)
+{
+	while ((*a)->nbr != find_min(*a)->nbr)
+	{
+		current_index(*a);
+		if (find_min(*a)->above_median)
+			ra(a, false);
+		else
+			rra(a, false);
+	}
 }

@@ -12,7 +12,7 @@
 
 #include "push_swap.h"
 
-static void handle_sorting(t_stack_node **a, t_stack_node **b)
+static void	handle_sorting(t_stack_node **a, t_stack_node **b)
 {
 	int	size;
 
@@ -54,7 +54,7 @@ static char	**parse_arguments(int argc, char *argv[], t_stack_node **a)
 	return (matrix);
 }
 
-static void cleanup_resources(t_stack_node *a, char **matrix)
+static void	cleanup_resources(t_stack_node *a, char **matrix)
 {
 	free_stack(&a);
 	if (matrix)
